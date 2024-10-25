@@ -1,0 +1,31 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizlet Clone</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Quizlet Clone</h1>
+
+        <!-- Form to add a new question -->
+        <form action="/add" method="POST">
+            <input type="text" name="question" placeholder="Enter Question" required>
+            <input type="text" name="answer" placeholder="Enter Answer" required>
+            <button type="submit">Add Question</button>
+        </form>
+
+        <h2>Saved Questions</h2>
+        <div class="questions-list">
+            {% for question in questions %}
+            <div class="question">
+                <p><strong>Q:</strong> {{ question[1] }}</p>
+                <p><strong>A:</strong> {{ question[2] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
